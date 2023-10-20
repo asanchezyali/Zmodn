@@ -157,7 +157,7 @@ class ZmodnArray:
 
     def rref(self):
         dim_row, dim_col = self.representatives.shape
-        matrix_rref = self.representatives.copy()
+        matrix_rref = self.representatives.copy().astype(int)
         num_loop = min(dim_row, dim_col)
 
         for index in range(num_loop):
@@ -171,7 +171,8 @@ class ZmodnArray:
                 ZmodnArray._swap_rows(matrix_rref, index, pivot_row)
 
             for row in range(index + 1, dim_row):
-                multiplier = Zmodn(matrix_rref[row, index],  self / pivot
+                class_array = Zmodn(self.module)
+                multiplier = class_array(matrix_rref[row, index]) / pivot
                 row_to_add = self.__call__(
                     matrix_rref[index, index:].astype(int) * multiplier.representative
                 )
