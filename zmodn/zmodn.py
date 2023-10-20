@@ -34,6 +34,7 @@ class Zmodn:
         def decorator(function):
             FUNCTIONS_HANDLER[numpy_function] = function
             return function
+
         return decorator
 
     @implements(np.add)
