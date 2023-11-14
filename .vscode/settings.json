@@ -2,5 +2,13 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "cSpell.words": [
+        "astype",
+        "coprime",
+        "linalg",
+        "pytest",
+        "vectorize",
+        "zmodn"
+    ]
 }

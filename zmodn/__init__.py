@@ -1,4 +1,4 @@
 from .zmodn import Zmodn
 import sys
 
-sys.modules["zmodn"] = Zmodn
+sys.modules["Zmodn"] = Zmodn

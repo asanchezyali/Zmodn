@@ -1,6 +1,7 @@
 import numpy as np
 from .utils.modular_inverse import vectorize_modular_inverse
 from .utils.adjoint_matrix import adjoint_matrix
+from .utils.validate_matrix import validate_matrix
 
 FUNCTIONS_HANDLER = dict()
 
@@ -57,17 +58,13 @@ class Zmodn:
     ```
     """
 
-    def __init__(self, integers, module):
-        if isinstance(integers, int):
-            integers = [integers]
-        elif isinstance(integers, list):
-            for i in integers:
-                if not isinstance(i, int):
-                    raise TypeError("All elements of the list must be integers")
+    def __init__(self, matrix_integers, module):
+        validated_matrix = validate_matrix(matrix_integers)
+        if validated_matrix:
+            self.representatives = np.array(validated_matrix) % module
+            self.module = module
         else:
-            raise TypeError("Integers must be an integer or a list of integers")
-        self.representatives = np.array(integers) % module
-        self.module = module
+            raise TypeError("Matrix must be a list of integers or a single integer")
 
     def __repr__(self):
         if len(self.representatives) == 1:
@@ -114,7 +111,8 @@ class Zmodn:
         determinant = self._check_invertible_matrix(matrix)
         adjoint = adjoint_matrix(matrix).astype(int)
         multiplier = int(self.__class__(1, self.module) / self.__class__(determinant, self.module))
-        return self.__class__(multiplier * adjoint, self.module)
+        inverse_matrix = multiplier * adjoint
+        return self.__class__(inverse_matrix.tolist(), self.module)
 
     @implements(np.add)
     def __add__(self, other):
@@ -137,7 +135,7 @@ class Zmodn:
     @implements(np.divide)
     def __truediv__(self, other):
         self._check_module_and_type(other)
-        repr_div = (np.array(self.representatives) * np.array(other.modular_inverse().representatives)) % self.module
+        repr_div = (np.array(self.representatives) * np.array(other.mod_inv().representatives)) % self.module
         return self.__class__(repr_div.tolist(), self.module)
 
     @implements(np.power)
