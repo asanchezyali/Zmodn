@@ -23,8 +23,27 @@ class Zmodn:
         __add__(other): Adds two Zmodn objects.
         __sub__(other): Subtracts two Zmodn objects.
         __mul__(other): Multiplies two Zmodn objects.
+        __matmul__(other): Multiplies two Zmodn objects.
         __truediv__(other): Divides two Zmodn objects.
         __pow__(other): Raises the Zmodn object to the given power.
+        __neg__(): Negates the Zmodn object.
+        __pos__(): Returns the Zmodn object.
+        __eq__(other): Checks if two Zmodn objects are equal.
+        __ne__(other): Checks if two Zmodn objects are not equal.
+        __lt__(other): Checks if the Zmodn object is less than the other Zmodn object.
+        __le__(other): Checks if the Zmodn object is less than or equal to the other Zmodn object.
+        __gt__(other): Checks if the Zmodn object is greater than the other Zmodn object.
+        __ge__(other): Checks if the Zmodn object is greater than or equal to the other Zmodn object.
+        __hash__(): Returns the hash of the Zmodn object.
+        __getitem__(key): Returns the representative at the given index.
+        __setitem__(key, value): Sets the representative at the given index to the given value.
+        __len__(): Returns the number of representatives of the Zmodn object.
+        __iter__(): Returns an iterator over the representatives of the Zmodn object.
+        __reversed__(): Returns a reverse iterator over the representatives of the Zmodn object.
+        __contains__(item): Checks if the Zmodn object contains the given representative.
+        __index__(): Returns the index of the Zmodn object.
+        __bool__(): Returns True if the Zmodn object is not empty, False otherwise.
+        __int__(): Returns the representative of the Zmodn object.
 
     Examples:
 
@@ -44,8 +63,14 @@ class Zmodn:
     # Print the representatives of the sum
     print(zmodn_sum.representatives)
 
+    # Subtract two Zmodn objects
+    zmodn_difference = zmodn - Zmodn([1, 4], 5)
+
     # Multiply two Zmodn objects
     zmodn_product = zmodn * Zmodn([1, 4], 5)
+
+    # Divide two Zmodn objects
+    zmodn_quotient = zmodn / Zmodn([1, 4], 5)
 
     # Print the representatives of the product
     print(zmodn_product.representatives)
@@ -92,8 +117,10 @@ class Zmodn:
         if not self.module == other.module:
             raise ValueError("Modules must be equal")
 
-    def _check_instance(self, other):
+    def _boolean_check_module_and_type(self, other):
         if not isinstance(other, self.__class__):
+            return False
+        if not self.module == other.module:
             return False
         return True
 
@@ -173,34 +200,38 @@ class Zmodn:
         return self.__class__(repr_pos.tolist(), self.module)
 
     def __eq__(self, other):
-        if not self._check_instance(other):
+        if not self._boolean_check_module_and_type(other):
             return False
-        return all(np.array(self.representatives) == np.array(other.representatives)) and self.module == other.module
+        return all(np.array(self.representatives) == np.array(other.representatives))
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
     def __lt__(self, other):
-        self._check_module_and_type(other)
+        if not self._boolean_check_module_and_type(other):
+            return False
         return all(np.array(self.representatives) < np.array(other.representatives))
 
     def __le__(self, other):
-        self._check_module_and_type(other)
+        if not self._boolean_check_module_and_type(other):
+            return False
         return all(np.array(self.representatives) <= np.array(other.representatives))
 
     def __gt__(self, other):
-        self._check_module_and_type(other)
+        if not self._boolean_check_module_and_type(other):
+            return False
         return all(np.array(self.representatives) > np.array(other.representatives))
 
     def __ge__(self, other):
-        self._check_module_and_type(other)
+        if not self._boolean_check_module_and_type(other):
+            return False
         return all(np.array(self.representatives) >= np.array(other.representatives))
 
     def __hash__(self):
-        return hash(tuple(self.representatives))
+        return hash(tuple(self.representatives) + (self.module,))
 
     def __getitem__(self, key):
-        return self.representatives[key]
+        return self.__class__(self.representatives[key].tolist(), self.module)
 
     def __setitem__(self, key, value):
         self.representatives[key] = value

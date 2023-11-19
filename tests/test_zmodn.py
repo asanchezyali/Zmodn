@@ -308,3 +308,89 @@ def test_ne():
     # Test inequality with a non-Zmodn object
     zmodn = Zmodn(2, 5)
     assert zmodn != 2
+
+
+def test_lt():
+    # Test less than
+    zmodn = Zmodn(2, 5)
+    assert zmodn < Zmodn(3, 5)
+
+    # Test less than with a different module
+    zmodn = Zmodn(2, 5)
+    assert not zmodn < Zmodn(2, 6)
+
+    # Test less than with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert not zmodn < 2
+
+
+def test_le():
+    # Test less than or equal to
+    zmodn = Zmodn(2, 5)
+    assert zmodn <= Zmodn(2, 5)
+
+    # Test less than or equal to with a different module
+    zmodn = Zmodn(2, 5)
+    assert not zmodn <= Zmodn(2, 6)
+
+    # Test less than or equal to with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert not zmodn <= 2
+
+
+def test_gt():
+    # Test greater than
+    zmodn = Zmodn(2, 5)
+    assert zmodn > Zmodn(1, 5)
+
+    # Test greater than with a different module
+    zmodn = Zmodn(2, 5)
+    assert not zmodn > Zmodn(2, 6)
+
+    # Test greater than with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert not zmodn > 2
+
+
+def test_ge():
+    # Test greater than or equal to
+    zmodn = Zmodn(2, 5)
+    assert zmodn >= Zmodn(2, 5)
+
+    # Test greater than or equal to with a different module
+    zmodn = Zmodn(2, 5)
+    assert not zmodn >= Zmodn(2, 6)
+
+    # Test greater than or equal to with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert not zmodn >= 2
+
+
+def test_hash():
+    # Test hash
+    zmodn = Zmodn(2, 5)
+    assert hash(zmodn) == hash(Zmodn(2, 5))
+
+
+def test_getitem():
+    # Test __getitem__
+    zmodn = Zmodn([2, 3], 5)
+    assert zmodn[0] == Zmodn(2, 5)
+    assert zmodn[1] == Zmodn(3, 5)
+
+    # Test __getitem__ with a negative index
+    zmodn = Zmodn([2, 3], 5)
+    assert zmodn[-1] == Zmodn(3, 5)
+
+    # Test __getitem__ with an out of bounds index
+    zmodn = Zmodn([2, 3], 5)
+    try:
+        zmodn[2]
+    except IndexError:
+        pass
+    else:
+        assert False, "Expected IndexError"
+
+    # Test __getitem__ with slice notation
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[1:].representatives, np.array([3, 4]))
