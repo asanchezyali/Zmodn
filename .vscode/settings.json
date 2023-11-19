@@ -5,7 +5,9 @@
     "python.formatting.provider": "none",
     "cSpell.words": [
         "astype",
+        "cofactor",
         "coprime",
+        "dtype",
         "linalg",
         "pytest",
         "vectorize",

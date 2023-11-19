@@ -87,10 +87,14 @@ class Zmodn:
         return decorator
 
     def _check_module_and_type(self, other):
-        if not self.module == other.module or not isinstance(other, self.__class__):
+        if not isinstance(other, self.__class__):
+            raise TypeError("Other must be a Zmodn object") 
+        if not self.module == other.module:
             raise ValueError("Modules must be equal")
 
     def _check_square_matrix(self, matrix):
+        if len(matrix.shape) != 2:
+            raise ValueError("Matrix is no two-dimensional")
         if matrix.shape[0] != matrix.shape[1]:
             raise ValueError("Matrix is no square")
 
@@ -106,6 +110,8 @@ class Zmodn:
         return self.__class__(repr_inverse.tolist(), self.module)
 
     def inv(self):
+        if len(self.representatives) == 1:
+            return self.mod_inv()
         matrix = self.representatives.astype(int)
         self._check_square_matrix(matrix)
         determinant = self._check_invertible_matrix(matrix)
@@ -130,6 +136,12 @@ class Zmodn:
     def __mul__(self, other):
         self._check_module_and_type(other)
         repr_mul = (np.array(self.representatives) * np.array(other.representatives)) % self.module
+        return self.__class__(repr_mul.tolist(), self.module)
+    
+    @implements(np.dot)
+    def __matmul__(self, other):
+        self._check_module_and_type(other)
+        repr_mul = (np.array(self.representatives) @ np.array(other.representatives)) % self.module
         return self.__class__(repr_mul.tolist(), self.module)
 
     @implements(np.divide)
