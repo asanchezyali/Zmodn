@@ -1,6 +1,7 @@
 import numpy as np
 from zmodn import Zmodn
 
+
 def test_init():
     # Test initialization with a single integer
     zmodn = Zmodn(2, 5)
@@ -20,6 +21,7 @@ def test_init():
     else:
         assert False, "Expected TypeError"
 
+
 def test_repr():
     # Test __repr__ with a single representative
     zmodn = Zmodn(2, 5)
@@ -29,11 +31,13 @@ def test_repr():
     zmodn = Zmodn([2, 3], 5)
     assert zmodn.__repr__() == "[2 3] (mod 5)"
 
+
 def test_mod_inv():
     # Test modular inverse
     zmodn = Zmodn(2, 5)
     zmodn_inverse = zmodn.mod_inv()
     assert np.array_equal(zmodn_inverse.representatives, np.array([3]))
+
 
 def test_inv():
     # Test inverse of a square matrix
@@ -58,7 +62,7 @@ def test_inv():
         pass
     else:
         assert False, "Expected ValueError"
-    
+
     # Test inverse of a matrix with a non-integer determinant
     zmodn_matrix = Zmodn([[1, 2], [3, 4]], 6)
     try:
@@ -67,7 +71,7 @@ def test_inv():
         pass
     else:
         assert False, "Expected ValueError"
-    
+
     # Test inverse of a matrix with a zero determinant
     zmodn_matrix = Zmodn([[1, 2], [3, 6]], 6)
     try:
@@ -76,6 +80,7 @@ def test_inv():
         pass
     else:
         assert False, "Expected ValueError"
+
 
 def test_add():
     # Test addition
@@ -100,7 +105,7 @@ def test_add():
         pass
     else:
         assert False, "Expected TypeError"
-    
+
     # Test addition with a non-integer
     zmodn = Zmodn(2, 5)
     try:
@@ -109,6 +114,7 @@ def test_add():
         pass
     else:
         assert False, "Expected TypeError"
+
 
 def test_sub():
     # Test subtraction
@@ -133,7 +139,7 @@ def test_sub():
         pass
     else:
         assert False, "Expected TypeError"
-    
+
     # Test subtraction with a non-integer
     zmodn = Zmodn(2, 5)
     try:
@@ -142,6 +148,7 @@ def test_sub():
         pass
     else:
         assert False, "Expected TypeError"
+
 
 def test_mul():
     # Test multiplication
@@ -166,7 +173,7 @@ def test_mul():
         pass
     else:
         assert False, "Expected TypeError"
-    
+
     # Test multiplication with a non-integer
     zmodn = Zmodn(2, 5)
     try:
@@ -175,6 +182,7 @@ def test_mul():
         pass
     else:
         assert False, "Expected TypeError"
+
 
 def test_matmul():
     # Test matrix multiplication
@@ -199,7 +207,7 @@ def test_matmul():
         pass
     else:
         assert False, "Expected TypeError"
-    
+
     # Test matrix multiplication with a non-integer
     zmodn_matrix = Zmodn([[1, 2], [3, 4]], 5)
     try:
@@ -208,6 +216,7 @@ def test_matmul():
         pass
     else:
         assert False, "Expected TypeError"
+
 
 def test_truediv():
     # Test division
@@ -232,7 +241,7 @@ def test_truediv():
         pass
     else:
         assert False, "Expected TypeError"
-    
+
     # Test division with a non-integer
     zmodn = Zmodn(2, 5)
     try:
@@ -241,6 +250,7 @@ def test_truediv():
         pass
     else:
         assert False, "Expected TypeError"
+
 
 def test_pow():
     # Test exponentiation
@@ -257,8 +267,44 @@ def test_pow():
     else:
         assert False, "Expected TypeError"
 
+
 def test_neg():
     # Test negative
     zmodn = Zmodn(2, 5)
     zmodn_neg = -zmodn
     assert np.array_equal(zmodn_neg.representatives, np.array([3]))
+
+
+def test_pos():
+    # Test positive
+    zmodn = Zmodn(2, 5)
+    zmodn_pos = +zmodn
+    assert np.array_equal(zmodn_pos.representatives, np.array([2]))
+
+
+def test_eq():
+    # Test equality
+    zmodn = Zmodn(2, 5)
+    assert zmodn == Zmodn(2, 5)
+
+    # Test equality with a different module
+    zmodn = Zmodn(2, 5)
+    assert not zmodn == Zmodn(2, 6)
+
+    # Test equality with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert not zmodn == 2
+
+
+def test_ne():
+    # Test inequality
+    zmodn = Zmodn(2, 5)
+    assert zmodn != Zmodn(3, 5)
+
+    # Test inequality with a different module
+    zmodn = Zmodn(2, 5)
+    assert zmodn != Zmodn(2, 6)
+
+    # Test inequality with a non-Zmodn object
+    zmodn = Zmodn(2, 5)
+    assert zmodn != 2

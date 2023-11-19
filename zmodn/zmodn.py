@@ -88,9 +88,14 @@ class Zmodn:
 
     def _check_module_and_type(self, other):
         if not isinstance(other, self.__class__):
-            raise TypeError("Other must be a Zmodn object") 
+            raise TypeError("Other must be a Zmodn object")
         if not self.module == other.module:
             raise ValueError("Modules must be equal")
+
+    def _check_instance(self, other):
+        if not isinstance(other, self.__class__):
+            return False
+        return True
 
     def _check_square_matrix(self, matrix):
         if len(matrix.shape) != 2:
@@ -137,7 +142,7 @@ class Zmodn:
         self._check_module_and_type(other)
         repr_mul = (np.array(self.representatives) * np.array(other.representatives)) % self.module
         return self.__class__(repr_mul.tolist(), self.module)
-    
+
     @implements(np.dot)
     def __matmul__(self, other):
         self._check_module_and_type(other)
@@ -168,8 +173,9 @@ class Zmodn:
         return self.__class__(repr_pos.tolist(), self.module)
 
     def __eq__(self, other):
-        self._check_module_and_type(other)
-        return all(np.array(self.representatives) == np.array(other.representatives))
+        if not self._check_instance(other):
+            return False
+        return all(np.array(self.representatives) == np.array(other.representatives)) and self.module == other.module
 
     def __ne__(self, other):
         return not self.__eq__(other)
