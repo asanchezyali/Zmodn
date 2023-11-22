@@ -1,4 +1,4 @@
-# Zmodn
+# ![Galois: A performant NumPy extension for Galois fields and their applications](https://raw.githubusercontent.com/asanchezyali/Zmodn/86c772c4172d6c2e1c74218c7a1badd0121726f4/logo/logo.drawio.svg?token=AG7IHPTZ7UY5AJZ6IHVYWDDFLZSVQ)
 
 The Zmodn package provides a class for representing integers modulo a given positive integer. This class can be used to
 applications such as cryptography and computer algebra.
