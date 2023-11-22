@@ -71,6 +71,12 @@ class Zmodn:
     """
 
     def __init__(self, matrix_integers, module):
+        """
+        The function initializes an object with a matrix of integers and a module, and performs validation on the matrix before assigning it to the object.
+
+        :param matrix_integers: The `matrix_integers` parameter is the input matrix that you want to perform operations on. It can be either a list of integers or a single integer
+        :param module: The `module` parameter is an integer that represents the modulus value. It is used to perform the modulo operation on each element of the matrix. The modulo operation calculates the remainder when dividing each element by the modulus value
+        """
         validated_matrix = validate_matrix(matrix_integers)
         if validated_matrix:
             self.representatives = np.array(validated_matrix) % module
@@ -79,12 +85,25 @@ class Zmodn:
             raise TypeError("Matrix must be a list of integers or a single integer")
 
     def __repr__(self):
+        """
+        The `__repr__` function returns a string representation of an object, including its representatives and module.
+        :return: The `__repr__` method is returning a string representation of the object. If the length of the `representatives` list is 1, it returns a string with the first element of the list followed by " (mod {self.module})". Otherwise, it returns a string with the entire `representatives` list followed by " (mod {self.module})".
+        """
         if len(self.representatives) == 1:
             return f"{self.representatives[0]} (mod {self.module})"
         else:
             return f"{self.representatives} (mod {self.module})"
 
     def __array_function__(self, func, types, args, kwargs):
+        """
+        The `__array_function__` method is used to handle array functions for objects of type `Zmodn`.
+
+        :param func: The `func` parameter is the function being called. It is a reference to the function object itself
+        :param types: A tuple of types that are being passed as arguments to the function
+        :param args: args is a tuple containing the positional arguments passed to the function
+        :param kwargs: kwargs is a dictionary that contains any additional keyword arguments passed to the function
+        :return: The code is returning the result of calling the function specified by `func` with the arguments `args` and `kwargs`.
+        """
         if func not in FUNCTIONS_HANDLER:
             return NotImplemented
         if not all(issubclass(t, Zmodn) for t in types):
@@ -92,6 +111,13 @@ class Zmodn:
         return FUNCTIONS_HANDLER[func](*args, **kwargs)
 
     def implements(numpy_function):
+        """
+        The `implements` function is a decorator that registers a function as the implementation for a specific numpy function.
+
+        :param numpy_function: The `numpy_function` parameter is the name of a NumPy function that you want to implement
+        :return: The decorator function is being returned.
+        """
+
         def decorator(function):
             FUNCTIONS_HANDLER[numpy_function] = function
             return function
@@ -99,6 +125,11 @@ class Zmodn:
         return decorator
 
     def _check_module_and_type(self, other):
+        """
+        The function checks if the input object is of the same class and has the same module as the current object.
+
+        :param other: The `other` parameter is an object that is being compared to the current object. It is expected to be an instance of the same class as the current object (`self.__class__`)
+        """
         if not isinstance(other, self.__class__):
             raise TypeError("Other must be a Zmodn object")
         if not self.module == other.module:
