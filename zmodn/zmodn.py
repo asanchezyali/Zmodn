@@ -1,7 +1,7 @@
 import numpy as np
-from .utils.modular_inverse import vectorize_modular_inverse
 from .utils.adjoint_matrix import adjoint_matrix
 from .utils.validate_matrix import validate_matrix
+from .utils.modular_inverse import vectorize_modular_inverse
 
 FUNCTIONS_HANDLER = dict()
 
@@ -279,4 +279,6 @@ class Zmodn:
         return bool(self.representatives.all())
 
     def __int__(self):
-        return int(self.representatives)
+        if self.representatives.size != 1:
+            raise ValueError("Cannot convert Zmodn object with more than one representative to an integer")
+        return int(self.representatives[0])
