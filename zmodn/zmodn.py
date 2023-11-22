@@ -8,14 +8,14 @@ FUNCTIONS_HANDLER = dict()
 
 class Zmodn:
     """
-    A class for representing integers modulo a given prime number.
+    A class for representing integers modulo a given positive integer.
 
-    This class provides methods for performing arithmetic operations on integers modulo a given prime number.
+    This class provides methods for performing arithmetic operations on integers modulo a given positive integer.
     It can be used for applications such as cryptography and computer algebra.
 
     Attributes:
         representatives: A NumPy array containing the representatives of the Zmodn object.
-        module: The prime number modulo which the Zmodn object is defined.
+        module: The positive integer modulo which the Zmodn object is defined.
 
     Methods:
         mod_inv(): Computes the modular inverse of the Zmodn object.

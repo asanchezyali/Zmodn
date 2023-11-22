@@ -1,15 +1,16 @@
 # Zmodn
 
-The Zmodn package provides a class for representing integers modulo a given prime number. This class can be used to
+The Zmodn package provides a class for representing integers modulo a given positive integer. This class can be used to
 applications such as cryptography and computer algebra.
 
 ## Features
 
-- Perform arithmetic operations (addition, subtraction, multiplication, division, power) on integers modulo a given prime number.
-- Compute the modular inverse of an integer modulo a given prime number.
-- Compute the inverse of a square matrix modulo a given prime number.
-- Compare two integers modulo a given prime number.
-- Access and modify the representatives of an integer modulo a given prime number.
+- Perform arithmetic operations (addition, subtraction, multiplication, division, power) on integers modulo a given
+  positive integer.
+- Compute the modular inverse of an integer modulo a given positive integer.
+- Compute the inverse of a square matrix modulo a given positive integer.
+- Compare two integers modulo a given positive integer.
+- Access and modify the representatives of an integer modulo a given positive integer.
 
 ## Installation
 
