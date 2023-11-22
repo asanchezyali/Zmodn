@@ -53,11 +53,11 @@ For more detailed information about the features and usage of Zmodn, please refe
 
 ## License
 
-Zmodn is licensed under the terms of the MIT license. See the [license file](https://github.com/username/zmodn/LICENSE) for details.
+Zmodn is licensed under the terms of the MIT license. See the [license file](https://github.com/asanchezyali/Zmodn/blob/main/LICENSE) for details.
 
 ## Contact
 
-If you have any questions, comments, or issues, please feel free to [contact us](https://github.com/username/zmodn/contact).
+If you have any questions, comments, or issues, please feel free to [contact us](https://github.com/asanchezyali).
 
 ## Contributing
 
