@@ -394,3 +394,196 @@ def test_getitem():
     # Test __getitem__ with slice notation
     zmodn = Zmodn([2, 3, 4], 5)
     assert np.array_equal(zmodn[1:].representatives, np.array([3, 4]))
+
+    # Test __getitem__ with slice notation and a step
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[::2].representatives, np.array([2, 4]))
+
+    # Test __getitem__ with slice notation and a negative step
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[::-1].representatives, np.array([4, 3, 2]))
+
+    # Test __getitem__ with slice notation and a negative start
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[-2:].representatives, np.array([3, 4]))
+
+    # Test __getitem__ with slice notation and a negative stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[:-1].representatives, np.array([2, 3]))
+
+    # Test __getitem__ with slice notation and a negative start and stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[-2:-1].representatives, np.array([3]))
+
+    # Test __getitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[::-2].representatives, np.array([4, 2]))
+
+    # Test __getitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[-2::-2].representatives, np.array([3]))
+
+    # Test __getitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    assert np.array_equal(zmodn[-2:0:-2].representatives, np.array([3]))
+
+
+def test_setitem():
+    # Test __setitem__
+    zmodn = Zmodn([2, 3], 5)
+    zmodn[0] = 10
+    assert np.array_equal(zmodn.representatives, np.array([0, 3]))
+
+    # Test __setitem__ with a negative index
+    zmodn = Zmodn([2, 3], 5)
+    zmodn[-1] = 10
+    assert np.array_equal(zmodn.representatives, np.array([2, 0]))
+
+    # Test __setitem__ with an out of bounds index
+    zmodn = Zmodn([2, 3], 5)
+    try:
+        zmodn[2] = 10
+    except IndexError:
+        pass
+    else:
+        assert False, "Expected IndexError"
+
+    # Test __setitem__ with slice notation
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[1:] = 10
+
+    # Test __setitem__ with slice notation and a step
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[::2] = 10
+
+    # Test __setitem__ with slice notation and a negative step
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[::-1] = 10
+
+    # Test __setitem__ with slice notation and a negative start
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[-2:] = 10
+
+    # Test __setitem__ with slice notation and a negative stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[:-1] = 10
+
+    # Test __setitem__ with slice notation and a negative start and stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[-2:-1] = 10
+
+    # Test __setitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[::-2] = 10
+
+    # Test __setitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[-2::-2] = 10
+
+    # Test __setitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    zmodn[-2:0:-2] = 10
+
+
+def test_delitem():
+    # Test __delitem__
+    zmodn = Zmodn([2, 3], 5)
+    del zmodn[0]
+    assert np.array_equal(zmodn.representatives, np.array([3]))
+
+    # Test __delitem__ with a negative index
+    zmodn = Zmodn([2, 3], 5)
+    del zmodn[-1]
+    assert np.array_equal(zmodn.representatives, np.array([2]))
+
+    # Test __delitem__ with an out of bounds index
+    zmodn = Zmodn([2, 3], 5)
+    try:
+        del zmodn[2]
+    except IndexError:
+        pass
+    else:
+        assert False, "Expected IndexError"
+
+    # Test __delitem__ with slice notation
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[1:]
+
+    # Test __delitem__ with slice notation and a step
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[::2]
+
+    # Test __delitem__ with slice notation and a negative step
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[::-1]
+
+    # Test __delitem__ with slice notation and a negative start
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[-2:]
+
+    # Test __delitem__ with slice notation and a negative stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[:-1]
+
+    # Test __delitem__ with slice notation and a negative start and stop
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[-2:-1]
+
+    # Test __delitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[::-2]
+
+    # Test __delitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[-2::-2]
+
+    # Test __delitem__ with slice notation and a negative start, stop, and step
+    zmodn = Zmodn([2, 3, 4], 5)
+    del zmodn[-2:0:-2]
+
+
+def test_len():
+    # Test __len__
+    zmodn = Zmodn([2, 3], 5)
+    assert len(zmodn) == 2
+
+
+def test_iter():
+    # Test __iter__
+    zmodn = Zmodn([2, 3], 5)
+    for i, zmodn_i in enumerate(zmodn):
+        assert zmodn_i == Zmodn([2, 3], 5)[i]
+
+
+def test_reversed():
+    # Test __reversed__
+    zmodn = Zmodn([2, 3], 5)
+    for i, zmodn_i in enumerate(reversed(zmodn)):
+        assert zmodn_i == Zmodn([2, 3], 5)[-i - 1]
+
+
+def test_contains():
+    # Test __contains__
+    zmodn = Zmodn([2, 3], 5)
+    assert Zmodn(2, 5) in zmodn
+    assert Zmodn(3, 5) in zmodn
+
+    # Test __contains__ with a non-Zmodn object
+    zmodn = Zmodn([2, 3], 5)
+    assert 2 not in zmodn
+
+
+def test_bool():
+    # Test __bool__
+    zmodn = Zmodn([2, 3], 5)
+    assert zmodn
+
+    # Test __bool__ with a zero representative
+    zmodn = Zmodn([0, 3], 5)
+    assert not zmodn
+
+
+def test_int():
+    # Test __int__
+    zmodn = Zmodn(2, 5)
+    assert int(zmodn) == 2

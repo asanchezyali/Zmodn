@@ -136,6 +136,10 @@ class Zmodn:
             raise ValueError("Matrix is no invertible")
         return determinant
 
+    @property
+    def classes(self):
+        return [self.__class__(int(element), self.module) for element in self.representatives]
+
     def mod_inv(self):
         integers_array = np.array(self.representatives).astype(int)
         repr_inverse = vectorize_modular_inverse(integers_array, self.module)
@@ -234,25 +238,27 @@ class Zmodn:
         return self.__class__(self.representatives[key].tolist(), self.module)
 
     def __setitem__(self, key, value):
-        self.representatives[key] = value
+        if not isinstance(value, int):
+            raise TypeError("Value must be an integer")
+        self.representatives[key] = value % self.module
+
+    def __delitem__(self, key):
+        self.representatives = np.delete(self.representatives, key)
 
     def __len__(self):
         return len(self.representatives)
 
     def __iter__(self):
-        return iter(self.representatives)
+        return iter(self.classes)
 
     def __reversed__(self):
-        return reversed(self.representatives)
+        return reversed(self.classes)
 
     def __contains__(self, item):
-        return item in self.representatives
-
-    def __index__(self):
-        return self.representatives.__index__()
+        return item in self.classes
 
     def __bool__(self):
-        return bool(self.representatives)
+        return bool(self.representatives.all())
 
     def __int__(self):
         return int(self.representatives)
