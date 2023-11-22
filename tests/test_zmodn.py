@@ -21,6 +21,22 @@ def test_init():
     else:
         assert False, "Expected TypeError"
 
+    # Test initialization with a module of zero
+    try:
+        zmodn = Zmodn(2, 0)
+    except ValueError:
+        pass
+    else:
+        assert False, "Expected ValueError"
+
+    # Test initialization with a negative module
+    try:
+        zmodn = Zmodn(2, -5)
+    except ValueError:
+        pass
+    else:
+        assert False, "Expected ValueError"
+
 
 def test_repr():
     # Test __repr__ with a single representative
