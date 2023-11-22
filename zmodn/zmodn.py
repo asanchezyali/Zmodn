@@ -41,7 +41,6 @@ class Zmodn:
         __iter__(): Returns an iterator over the representatives of the Zmodn object.
         __reversed__(): Returns a reverse iterator over the representatives of the Zmodn object.
         __contains__(item): Checks if the Zmodn object contains the given representative.
-        __index__(): Returns the index of the Zmodn object.
         __bool__(): Returns True if the Zmodn object is not empty, False otherwise.
         __int__(): Returns the representative of the Zmodn object.
 
@@ -54,14 +53,8 @@ class Zmodn:
     # Create a Zmodn object with the representatives 2 and 3 modulo 5
     zmodn = Zmodn([2, 3], 5)
 
-    # Print the representatives of the Zmodn object
-    print(zmodn.representatives)
-
     # Add two Zmodn objects
     zmodn_sum = zmodn + Zmodn([1, 4], 5)
-
-    # Print the representatives of the sum
-    print(zmodn_sum.representatives)
 
     # Subtract two Zmodn objects
     zmodn_difference = zmodn - Zmodn([1, 4], 5)
@@ -72,14 +65,8 @@ class Zmodn:
     # Divide two Zmodn objects
     zmodn_quotient = zmodn / Zmodn([1, 4], 5)
 
-    # Print the representatives of the product
-    print(zmodn_product.representatives)
-
     # Compute the modular inverse of a Zmodn object
     zmodn_inverse = zmodn.mod_inv()
-
-    # Print the representatives of the modular inverse
-    print(zmodn_inverse.representatives)
     ```
     """
 

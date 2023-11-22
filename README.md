@@ -3,48 +3,60 @@
 The Zmodn package provides a class for representing integers modulo a given prime number. This class can be used to
 applications such as cryptography and computer algebra.
 
-## Setup
-To install the `zmodn`` library, run the following command:
+## Features
+
+- Perform arithmetic operations (addition, subtraction, multiplication, division, power) on integers modulo a given prime number.
+- Compute the modular inverse of an integer modulo a given prime number.
+- Compute the inverse of a square matrix modulo a given prime number.
+- Compare two integers modulo a given prime number.
+- Access and modify the representatives of an integer modulo a given prime number.
+
+## Installation
+
+To install Zmodn, you can use pip:
 
 ```bash
 pip install zmodn
 ```
 
 ## Usage
-To use the `zmodn` library, simply import the `Zmodn` class and create a new instance of it. The constructor takes
-two arguments: the value of the integer and the prime number to use as the modulus. For example, to create the integer
-`5` modulo `7`, you would run the following code:
+
+Here is a simple example of how to use Zmodn:
 
 ```python
+import numpy as np
 from zmodn import Zmodn
 
-x = Zmodn(5, 7)
+# Create a Zmodn object with the representatives 2 and 3 modulo 5
+zmodn = Zmodn([2, 3], 5)
+
+# Add two Zmodn objects
+zmodn_sum = zmodn + Zmodn([1, 4], 5)
+
+# Subtract two Zmodn objects
+zmodn_difference = zmodn - Zmodn([1, 4], 5)
+
+# Multiply two Zmodn objects
+zmodn_product = zmodn * Zmodn([1, 4], 5)
+
+# Divide two Zmodn objects
+zmodn_quotient = zmodn / Zmodn([1, 4], 5)
+
+# Compute the modular inverse of a Zmodn object
+zmodn_inverse = zmodn.mod_inv()
 ```
 
-The `Zmodn` class supports all of the standard arithmetic operations, including addition, subtraction, multiplication,
-and division. For example, to add two integers modulo `7`, you would run the following code:
+## Documentation
 
-```python
-from zmodn import Zmodn
+For more detailed information about the features and usage of Zmodn, please refer to the [documentation](https://github.com/username/zmodn/docs).
 
-x = Zmodn(5, 7)
-y = Zmodn(3, 7)
+## License
 
-z = x + y
-```
+Zmodn is licensed under the terms of the MIT license. See the [license file](https://github.com/username/zmodn/LICENSE) for details.
 
-The `Zmodn` class also supports the comparison operators, including equality, inequality, less than, less than or equal
-to, greater than, and greater than or equal to. For example, to check if two integers modulo `7` are equal, you would
-run the following code:
+## Contact
 
-```python
-from zmodn import Zmodn
-
-x = Zmodn(5, 7)
-y = Zmodn(3, 7)
-
-z = x == y
-```
+If you have any questions, comments, or issues, please feel free to [contact us](https://github.com/username/zmodn/contact).
 
 ## Contributing
 
@@ -58,7 +70,7 @@ To contribute to the `zmodn` library, you will need to:
 4. Add tests to ensure that your changes work correctly.
 5. Push your branch to the fork.
 6. Create a pull request to merge your changes into the main repository.
-   
+
 Please be sure to follow the coding style guide and add documentation for any new features or changes that you make.
 
 We appreciate your contributions to the zmodn library!
