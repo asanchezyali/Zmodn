@@ -1,0 +1,16 @@
+<mxfile host="app.diagrams.net" modified="2023-11-22T20:24:16.786Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="BDpqJMfTwDD35dU64h78" version="22.1.3" type="device">
+  <diagram name="Page-1" id="cTTbBVW-SHMXRIQHrOnZ">
+    <mxGraphModel dx="1242" dy="831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2lLzU6K8PBcktZP34Vqj-2" value="&lt;h1&gt;&lt;font style=&quot;&quot;&gt;&lt;font color=&quot;#009999&quot; style=&quot;font-family: Verdana; font-size: 41px;&quot;&gt;`\mathbb{Z}`&lt;/font&gt;&lt;span style=&quot;font-size: 40px; font-weight: normal;&quot;&gt;&amp;nbsp;&lt;font color=&quot;#6a8cbd&quot;&gt;mod&lt;/font&gt;&lt;font face=&quot;Verdana&quot;&gt;&amp;nbsp;&lt;font color=&quot;#009999&quot;&gt;`n`&lt;/font&gt;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="130" width="570" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="2lLzU6K8PBcktZP34Vqj-6" value="Modular Arithmetic Library" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="200" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
