@@ -1,9 +1,17 @@
 
 <p align="center">
   <a href="https://github.com/asanchezyali/Zmodn#readme">
-    <img src="logo/logo.svg" alt="Logo" width="100%" height="140">
+    <img src="logo/logo.drawio.svg" alt="Logo" width="100%" height="140">
   </a>
 </p>
+
+<div align=center>
+  <a href="https://github.com//Zmodn/actions/workflows/docs.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/docs.yaml/badge.svg"></a>
+  <a href="https://github.com//Zmodn/actions/workflows/lint.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/lint.yaml/badge.svg"></a>
+  <a href="https://github.comrZmodns/actions/workflows/build.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/build.yaml/badge.svg"></a>
+  <a href="https://github.com//Zmodn/actions/workflows/test.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/test.yaml/badge.svg"></a>
+  <a href="https://codecov.io/gh//Zmodn"><img src="https://codecov.io/gh/mhostetter/galois/branch/master/graph/badge.svg?token=3FJML79ZUK"></a>
+</div>
 
 The Zmodn package provides a class for representing integers modulo a given positive integer. This class can be used to
 applications such as cryptography and computer algebra.
@@ -80,3 +88,25 @@ To contribute to the `zmodn` library, you will need to:
 Please be sure to follow the coding style guide and add documentation for any new features or changes that you make.
 
 We appreciate your contributions to the zmodn library!
+
+## Citation
+
+If this library was useful to you in your research, please cite us. Following the [GitHub citation standards](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files), here is the recommended citation.
+
+### BibTeX
+
+```bibtex
+@software{Sanchez_Alejandro_2020,
+    title = {{Z mod n}: Efficient Modulo Arithmetic with NumPy},
+    author = {Sánchez, Alejandro},
+    month = {11},
+    year = {2023},
+    url = {https://github.com/asanchezyali/Zmodn},
+}
+```
+
+### APA
+
+```
+Sánchez, A. (2023). Z mod n: Efficient Modulo Arithmetic with NumPy.
+```
