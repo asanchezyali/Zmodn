@@ -19,21 +19,30 @@ class Zmodn:
 
     Methods:
         mod_inv(): Computes the modular inverse of the Zmodn object.  inv(): Computes the inverse of the Zmodn object,
-        assuming it is a square matrix.  __add__(other): Adds two Zmodn objects.  __sub__(other): Subtracts two Zmodn
-        objects.  __mul__(other): Multiplies two Zmodn objects.  __matmul__(other): Multiplies two Zmodn objects.
-        __truediv__(other): Divides two Zmodn objects.  __pow__(other): Raises the Zmodn object to the given power.
-        __neg__(): Negates the Zmodn object.  __pos__(): Returns the Zmodn object.  __eq__(other): Checks if two Zmodn
-        objects are equal.  __ne__(other): Checks if two Zmodn objects are not equal.  __lt__(other): Checks if the
-        Zmodn object is less than the other Zmodn object.  __le__(other): Checks if the Zmodn object is less than or
-        equal to the other Zmodn object.  __gt__(other): Checks if the Zmodn object is greater than the other Zmodn
-        object.  __ge__(other): Checks if the Zmodn object is greater than or equal to the other Zmodn object.
-        __hash__(): Returns the hash of the Zmodn object.  __getitem__(key): Returns the representative at the given
-        index.  __setitem__(key, value): Sets the representative at the given index to the given value.  __len__():
-        Returns the number of representatives of the Zmodn object.  __iter__(): Returns an iterator over the
-        representatives of the Zmodn object.  __reversed__(): Returns a reverse iterator over the representatives of the
-        Zmodn object.  __contains__(item): Checks if the Zmodn object contains the given representative.  __bool__():
-        Returns True if the Zmodn object is not empty, False otherwise.  __int__(): Returns the representative of the
-        Zmodn object.
+            assuming it is a square matrix.
+        __add__(other): Adds two Zmodn objects.
+        __sub__(other): Subtracts two Zmodn objects.
+        __mul__(other): Multiplies two Zmodn objects.
+        __matmul__(other): Multiplies two Zmodn objects.
+        __truediv__(other): Divides two Zmodn objects.
+        __pow__(other): Raises the Zmodn object to the given power.
+        __neg__(): Negates the Zmodn object.
+        __pos__(): Returns the Zmodn object.
+        __eq__(other): Checks if two Zmodn objects are equal.
+        __ne__(other): Checks if two Zmodn objects are not equal.
+        __lt__(other): Checks if the Zmodn object is less than the other Zmodn object.
+        __le__(other): Checks if the Zmodn object is less than or equal to the other Zmodn object.
+        __gt__(other): Checks if the Zmodn object is greater than the other Zmodn object.
+        __ge__(other): Checks if the Zmodn object is greater than or equal to the other Zmodn object.
+        __hash__(): Returns the hash of the Zmodn object.
+        __getitem__(key): Returns the representative at the given index.
+        __setitem__(key, value): Sets the representative at the given index to the given value.
+        __len__(): Returns the number of representatives of the Zmodn object.
+        __iter__(): Returns an iterator over the representatives of the Zmodn object.
+        __reversed__(): Returns a reverse iterator over the representatives of the Zmodn object.
+        __contains__(item): Checks if the Zmodn object contains the given representative.
+        __bool__(): Returns True if the Zmodn object is not empty, False otherwise.
+        __int__(): Returns the representative of theZmodn object.
 
     Examples:
 
