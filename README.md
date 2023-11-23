@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://github.com/asanchezyali/Zmodn#readme">
-    <img src="logo/logo.drawio.svg" alt="Logo" width="100%" height="140">
+    <img src="logo/logo.svg" alt="Logo" width="100%" height="140">
   </a>
   <a href="https://github.com//Zmodn/actions/workflows/docs.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/docs.yaml/badge.svg"></a>
   <a href="https://github.com//Zmodn/actions/workflows/lint.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/lint.yaml/badge.svg"></a>
