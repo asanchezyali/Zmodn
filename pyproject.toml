@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "zmodn"
 version = "0.1.0"
-description = ""
+description = "Zmodn is a Python library for modular arithmetic on Z/nZ."
 authors = ["Alejandro Sanchez Yali <asanchezyali@gmail.com>"]
 readme = "README.md"
 
