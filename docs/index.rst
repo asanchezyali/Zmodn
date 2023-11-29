@@ -27,7 +27,6 @@ Here is a simple example of how to use Zmodn:
 
 .. code-block:: python
 
-   import numpy as np
    from zmodn import Zmodn
 
    # Create a Zmodn object with the representatives 2 and 3 modulo 5
@@ -106,6 +105,15 @@ If this library was useful to you in your research, please cite us. Following th
          Sánchez, A. (2023). Zmodn: Efficient Modulo Arithmetic with NumPy. [Computer software]. https://github.com/asanchezyali/Zmodn
 
 
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
+   :hidden:
+
+   getting-started.rst
+
+   .. toctree::
+   :caption: API Reference
+   :hidden:
+
+   api.rst
