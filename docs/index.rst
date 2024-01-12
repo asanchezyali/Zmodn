@@ -112,7 +112,13 @@ If this library was useful to you in your research, please cite us. Following th
 
    getting-started.rst
 
-   .. toctree::
+.. toctree::
+   :caption: Developer Guide
+   :hidden:
+
+   developer-guide.rst
+
+.. toctree::
    :caption: API Reference
    :hidden:
 

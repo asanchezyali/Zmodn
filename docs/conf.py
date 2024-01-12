@@ -212,8 +212,6 @@ mathjax3_config = {
 
 # -- Sphinx Immaterial configs -------------------------------------------------
 
-
-# Python apigen configuration
 python_apigen_modules = {
     "zmodn": "api/zmodn.",
 }
