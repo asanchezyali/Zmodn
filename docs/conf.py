@@ -12,6 +12,8 @@
 #
 import os
 import sys
+import re
+import sphinx
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath(".."))
@@ -31,6 +33,7 @@ author = "Alejandro Sánchez Yalí"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.mathjax",
     "sphinx.ext.intersphinx",
@@ -44,6 +47,10 @@ extensions = [
     "IPython.sphinxext.ipython_directive",
     "ipython_with_reprs",
 ]
+
+# The reST default role (used for this markup: `text`) to use for all
+# documents.
+default_role = "any"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -281,3 +288,75 @@ sphinx_immaterial_custom_admonitions = [
         "color": (230, 105, 91),  # Red: --md-code-hl-number-color
     },
 ]
+
+
+def autodoc_process_bases(app, name, obj, options, bases):
+    """
+    Remove private classes or mixin classes from documented class bases.
+    """
+    # Determine the bases to be removed
+    remove_bases = []
+    for base in bases:
+        if base.__name__[0] == "_" or "Mixin" in base.__name__:
+            remove_bases.append(base)
+
+    # Remove from the bases list in-place
+    for base in remove_bases:
+        bases.remove(base)
+
+
+def classproperty(obj):
+    ret = classmethod(obj)
+    ret.__doc__ = obj.__doc__
+    return ret
+
+
+def autodoc_process_signature(app, what, name, obj, options, signature, return_annotation):
+    signature = modify_type_hints(signature)
+    return_annotation = modify_type_hints(return_annotation)
+    return signature, return_annotation
+
+
+def modify_type_hints(signature):
+    """
+    Fix shortening numpy type annotations in string annotations created with
+    `from __future__ import annotations` that Sphinx can't process before Python
+    3.10.
+
+    See https://github.com/jbms/sphinx-immaterial/issues/161
+    """
+    if signature:
+        signature = re.sub(r"(?<!~)np\.", "~numpy.", signature)
+        signature = re.sub(r"(?<!~)zmodn\.", "~zmodn.", signature)
+    return signature
+
+
+def monkey_patch_parse_see_also():
+    """
+    Use the NumPy docstring parsing of See Also sections for convenience. This automatically
+    hyperlinks plaintext functions and methods.
+    """
+    # Add the special parsing method from NumpyDocstring
+    method = sphinx.ext.napoleon.NumpyDocstring._parse_numpydoc_see_also_section
+    sphinx.ext.napoleon.GoogleDocstring._parse_numpydoc_see_also_section = method
+
+    def _parse_see_also_section(self, section: str):
+        """Copied from NumpyDocstring._parse_see_also_section()."""
+        lines = self._consume_to_next_section()
+
+        # Added: strip whitespace from lines to satisfy _parse_numpydoc_see_also_section()
+        for i in range(len(lines)):
+            lines[i] = lines[i].strip()
+
+        try:
+            return self._parse_numpydoc_see_also_section(lines)
+        except ValueError:
+            return self._format_admonition("seealso", lines)
+
+    sphinx.ext.napoleon.GoogleDocstring._parse_see_also_section = _parse_see_also_section
+
+
+def setup(app):
+    monkey_patch_parse_see_also()
+    app.connect("autodoc-process-bases", autodoc_process_bases)
+    app.connect("autodoc-process-signature", autodoc_process_signature)
