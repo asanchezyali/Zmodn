@@ -190,14 +190,6 @@ autodoc_typehints = "signature"
 autodoc_typehints_description_target = "documented"
 autodoc_typehints_format = "short"
 
-autodoc_type_aliases = {
-    "ElementLike": "~typing.ElementLike",
-    "IterableLike": "~typing.IterableLike",
-    "ArrayLike": "~typing.ArrayLike",
-    "ShapeLike": "~typing.ShapeLike",
-    "DTypeLike": "~typing.DTypeLike",
-    "PolyLike": "~typing.PolyLike",
-}
 
 ipython_execlines = ["import math", "import numpy as np", "import zmodn"]
 
@@ -220,7 +212,7 @@ mathjax3_config = {
 # -- Sphinx Immaterial configs -------------------------------------------------
 
 python_apigen_modules = {
-    "zmodn": "api/zmodn.",
+    "zmodn": "api/",
 }
 
 python_apigen_default_groups = [
@@ -254,7 +246,6 @@ python_apigen_case_insensitive_filesystem = False
 python_apigen_show_base_classes = True
 
 # Python domain directive configuration
-python_type_aliases = autodoc_type_aliases
 python_module_names_to_strip_from_xrefs = ["collections.abc"]
 
 # General API configuration

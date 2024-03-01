@@ -7,6 +7,13 @@ FUNCTIONS_HANDLER = dict()
 
 
 class Zmodn:
+    r"""
+    Does not work for matrices.Computes the modular inverse of the Zmodn object using the extended Euclidean algorithm.
+
+    Group:
+        Modular Arithmetic
+    """
+
     def __init__(self, matrix_integers, module):
         validated_matrix = validate_matrix(matrix_integers)
         if not validated_matrix:
@@ -65,23 +72,26 @@ class Zmodn:
 
     @property
     def classes(self):
-        return [self.__class__(int(element), self.module) for element in self.representatives]
+        r"""
+        Returns the representatives of the Zmodn object as a list.
+
+        Returns:
+            list: List of integers
+        """
+        return [
+            self.__class__(int(element), self.module)
+            for element in self.representatives
+        ]
 
     def mod_inv(self):
         r"""
-        Does not work for matrices
-
-        Arguments:
-            self (Zmodn): Zmodn object
+        Does not work for matrices.Computes the modular inverse of the Zmodn object using the extended Euclidean algorithm.
 
         Returns:
             Zmodn: Zmodn object
 
         Raises:
             ValueError: If the Zmodn object has more than one representative
-
-        Group:
-            Modular arithmetic
         """
         integers_array = np.array(self.representatives).astype(int)
         repr_inverse = vectorize_modular_inverse(integers_array, self.module)
@@ -94,38 +104,50 @@ class Zmodn:
         self._check_square_matrix(matrix)
         determinant = self._check_invertible_matrix(matrix)
         adjoint = adjoint_matrix(matrix).astype(int)
-        multiplier = int(self.__class__(1, self.module) / self.__class__(determinant, self.module))
+        multiplier = int(
+            self.__class__(1, self.module) / self.__class__(determinant, self.module)
+        )
         inverse_matrix = multiplier * adjoint
         return self.__class__(inverse_matrix.tolist(), self.module)
 
     @implements(np.add)
     def __add__(self, other):
         self._check_module_and_type(other)
-        repr_sum = (np.array(self.representatives) + np.array(other.representatives)) % self.module
+        repr_sum = (
+            np.array(self.representatives) + np.array(other.representatives)
+        ) % self.module
         return self.__class__(repr_sum.tolist(), self.module)
 
     @implements(np.subtract)
     def __sub__(self, other):
         self._check_module_and_type(other)
-        repr_sub = (np.array(self.representatives) - np.array(other.representatives)) % self.module
+        repr_sub = (
+            np.array(self.representatives) - np.array(other.representatives)
+        ) % self.module
         return self.__class__(repr_sub.tolist(), self.module)
 
     @implements(np.multiply)
     def __mul__(self, other):
         self._check_module_and_type(other)
-        repr_mul = (np.array(self.representatives) * np.array(other.representatives)) % self.module
+        repr_mul = (
+            np.array(self.representatives) * np.array(other.representatives)
+        ) % self.module
         return self.__class__(repr_mul.tolist(), self.module)
 
     @implements(np.dot)
     def __matmul__(self, other):
         self._check_module_and_type(other)
-        repr_mul = (np.array(self.representatives) @ np.array(other.representatives)) % self.module
+        repr_mul = (
+            np.array(self.representatives) @ np.array(other.representatives)
+        ) % self.module
         return self.__class__(repr_mul.tolist(), self.module)
 
     @implements(np.divide)
     def __truediv__(self, other):
         self._check_module_and_type(other)
-        repr_div = (np.array(self.representatives) * np.array(other.mod_inv().representatives)) % self.module
+        repr_div = (
+            np.array(self.representatives) * np.array(other.mod_inv().representatives)
+        ) % self.module
         return self.__class__(repr_div.tolist(), self.module)
 
     @implements(np.power)
@@ -204,5 +226,7 @@ class Zmodn:
 
     def __int__(self):
         if self.representatives.size != 1:
-            raise ValueError("Cannot convert Zmodn object with more than one representative to an integer")
+            raise ValueError(
+                "Cannot convert Zmodn object with more than one representative to an integer"
+            )
         return int(self.representatives[0])

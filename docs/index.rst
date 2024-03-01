@@ -121,5 +121,6 @@ If this library was useful to you in your research, please cite us. Following th
 .. toctree::
    :caption: API Reference
    :hidden:
+   :maxdepth: 2
 
    api.rst

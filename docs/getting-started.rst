@@ -11,10 +11,10 @@ The last stable release is available on PyPI and can be installed with pip:
     pip install zmodn
     zmodn.__version__
 
-Create a :obj:`Zmodn` instance
+Create a :obj:`~.zmodn.Zmodn` instance
 ------------------------------
 
-The :obj:`Zmodn` class is the main interface to the library. It represents a set of integers modulo a given modulus. The
+The :obj:`zmodn` class is the main interface to the library. It represents a set of integers modulo a given modulus. The
 modulus must be a positive integer. The representatives of the set are given as a list of integers or a single integer.
 In this example, we create a :obj:`Zmodn` instance representing the set of integers modulo 5 with representatives 1, 2,
 3, 4, and 5 (which are equivalent to 1, 2, 3, 4, and 0 modulo 5, respectively):
