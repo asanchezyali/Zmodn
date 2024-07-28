@@ -1,0 +1,31 @@
+version: '3'
+
+tasks:
+  development:
+    cmds:
+      - poetry install
+      - poetry run python -m pre_commit install
+      - poetry run pre-commit install
+      - poetry run pre-commit autoupdate
+      - poetry run pre-commit run --all-files
+
+  install:
+    cmds:
+      - poetry shell
+      - pip install -e .
+
+  build-docs:
+    cmds:
+      - cd docs && make html
+
+  clean-docs:
+    cmds:
+      - cd docs && make clean html
+
+  generate-requirements:
+    cmds:
+      - poetry export --without-hashes --format=requirements.txt > requirements.txt
+
+  test:
+    cmds:
+      - poetry run pytest

@@ -27,7 +27,7 @@ applications such as cryptography and computer algebra.
 To install Zmodn, you can use pip:
 
 ```bash
-pip install zmodn
+pip install .
 ```
 
 ## Usage
