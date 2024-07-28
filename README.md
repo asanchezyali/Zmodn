@@ -94,7 +94,7 @@ If this library was useful to you in your research, please cite us. Following th
 
 ```bibtex
 @software{Sanchez_Alejandro_2020,
-    title = {{Zmodn}: Efficient Modulo Arithmetic with NumPy},
+    title = {{Zmodn}: Practical Modular Arithmetic Using NumPy},
     author = {Sánchez, Alejandro},
     month = {11},
     year = {2023},
@@ -105,5 +105,5 @@ If this library was useful to you in your research, please cite us. Following th
 ### APA
 
 ```
-Sánchez, A. (2023). Zmodn: Efficient Modulo Arithmetic with NumPy. [Computer software]. https://github.com/asanchezyali/Zmodn
+Sánchez, A. (2023). Zmodn: Practical Modular Arithmetic Using NumPy. [Computer software]. https://github.com/asanchezyali/Zmodn
 ```
