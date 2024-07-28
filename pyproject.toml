@@ -8,6 +8,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 numpy = { version = "^1.26.1", python = ">=3.11,<3.13" }
+sphinx-last-updated-by-git = "^0.3.7"
+sphinx-immaterial = "^0.12.1"
+sphinx-math-dollar = "^1.2.1"
+myst-parser = "^3.0.1"
+sphinx = "^7.4.7"
+sphinx-design = "^0.6.0"
+ipython = "^8.26.0"
 
 
 [tool.poetry.group.dev.dependencies]
