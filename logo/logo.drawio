@@ -1,16 +1,19 @@
-<mxfile host="65bd71144e">
-    <diagram name="Page-1" id="cTTbBVW-SHMXRIQHrOnZ">
-        <mxGraphModel dx="678" dy="928" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <mxCell id="2lLzU6K8PBcktZP34Vqj-2" value="&lt;h1&gt;&lt;font style=&quot;&quot;&gt;&lt;font color=&quot;#009999&quot; style=&quot;font-family: Verdana; font-size: 41px;&quot;&gt;`\mathbb{Z}`&lt;/font&gt;&lt;span style=&quot;font-size: 40px; font-weight: normal;&quot;&gt;&amp;nbsp;&lt;font color=&quot;#6a8cbd&quot;&gt;mod&lt;/font&gt;&lt;font face=&quot;Verdana&quot;&gt;&amp;nbsp;&lt;font color=&quot;#009999&quot;&gt;`n`&lt;/font&gt;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="130" y="130" width="570" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="2lLzU6K8PBcktZP34Vqj-6" value="Efficient Modulo Arithmetic with NumPy" style="text;align=center;verticalAlign=middle;rounded=0;fontColor=#009999;html=1;whiteSpace=wrap;labelBackgroundColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="230" y="190" width="370" height="30" as="geometry"/>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.5">
+  <diagram name="Page-1" id="cTTbBVW-SHMXRIQHrOnZ">
+    <mxGraphModel dx="2314" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5mYz1uFn3vAN20aArNRH-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="130" y="130" width="570" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="2lLzU6K8PBcktZP34Vqj-2" value="&lt;h1&gt;&lt;font style=&quot;&quot;&gt;&lt;font color=&quot;#009999&quot; style=&quot;font-family: Verdana; font-size: 41px;&quot;&gt;`\mathbb{Z}`&lt;/font&gt;&lt;span style=&quot;font-size: 40px; font-weight: normal;&quot;&gt;&amp;nbsp;&lt;font color=&quot;#6a8cbd&quot;&gt;mod&lt;/font&gt;&lt;font face=&quot;Verdana&quot;&gt;&amp;nbsp;&lt;font color=&quot;#009999&quot;&gt;`n`&lt;/font&gt;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="5mYz1uFn3vAN20aArNRH-1" vertex="1">
+          <mxGeometry width="570" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="2lLzU6K8PBcktZP34Vqj-6" value="Practical Modular Arithmetic Using NumPy" style="text;align=center;verticalAlign=middle;rounded=0;fontColor=#009999;html=1;whiteSpace=wrap;labelBackgroundColor=none;" parent="5mYz1uFn3vAN20aArNRH-1" vertex="1">
+          <mxGeometry x="100" y="60" width="370" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>
