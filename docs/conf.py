@@ -112,12 +112,12 @@ html_theme_options = {
     "icon": {
         "repo": "fontawesome/brands/github",
     },
-    "repo_url": "https://github.com/asanchezyali/Zmodn",
-    "repo_name": "asanchezyali/Zmodn",
+    "repo_url": "https://github.com/asanchezyali/zmodn",
+    "repo_name": "asanchezyali/zmodn",
     "social": [
         {
             "icon": "fontawesome/brands/github",
-            "link": "https://github.com/asanchezyali/Zmodn",
+            "link": "https://github.com/asanchezyali/zmodn",
         },
         {
             "icon": "fontawesome/brands/twitter",

@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://github.com/asanchezyali/zmodn#readme">
-    <img src="logo/heading.svg" alt="Logo" width="100%">
+    <img src="logo/heading.svg" alt="Logo" width="100%" height="180px">
   </a>
 </div>
 <br>
