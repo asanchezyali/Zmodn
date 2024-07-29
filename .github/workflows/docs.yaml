@@ -1,5 +1,7 @@
 name: Zmodn
+
 on: [push, pull_request, workflow_dispatch]
+
 permissions:
   contents: write
 
@@ -30,10 +32,10 @@ jobs:
           path: ~/.local
           key: poetry-${{ runner.os }}-${{ matrix.python-version }}
 
-      - name: Install Poetry
+      - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
-          version: 1.5.1
+          version: latest
           virtualenvs-create: true
           virtualenvs-in-project: true
 
@@ -45,11 +47,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install
+          poetry install --with dev
+
+      - name: Check Sphinx installation
+        run: |
+          poetry run sphinx-build --version
 
       - name: Sphinx build
         run: |
-          poetry run sphinx-build docs _build
+          poetry run sphinx-build -b html docs _build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
