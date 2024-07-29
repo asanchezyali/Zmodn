@@ -26,12 +26,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Load cached Poetry installation
-        uses: actions/cache@v3
-        with:
-          path: ~/.local
-          key: poetry-${{ runner.os }}-${{ matrix.python-version }}
-
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
@@ -39,18 +33,15 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
 
-      - name: Load cached dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
       - name: Install dependencies
         run: |
           poetry install --with dev
+          poetry run pip install sphinx  # Asegurarse de que Sphinx esté instalado
+          poetry run pip list  # Listar todos los paquetes instalados
 
       - name: Check Sphinx installation
         run: |
+          poetry run which sphinx-build
           poetry run sphinx-build --version
 
       - name: Sphinx build
