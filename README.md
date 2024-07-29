@@ -1,13 +1,8 @@
 
 <div align="center">
-  <a href="https://github.com/asanchezyali/Zmodn#readme">
-    <img src="logo/heading.svg" alt="Logo" width="100%" height="140">
+  <a href="https://github.com/asanchezyali/zmodn#readme">
+    <img src="logo/heading.svg" alt="Logo" width="100%">
   </a>
-  <a href="https://github.com//Zmodn/actions/workflows/docs.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/docs.yaml/badge.svg"></a>
-  <a href="https://github.com//Zmodn/actions/workflows/lint.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/lint.yaml/badge.svg"></a>
-  <a href="https://github.comrZmodns/actions/workflows/build.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/build.yaml/badge.svg"></a>
-  <a href="https://github.com//Zmodn/actions/workflows/test.yaml"><img src="https://github.com/mhostetter/galois/actions/workflows/test.yaml/badge.svg"></a>
-  <a href="https://codecov.io/gh//Zmodn"><img src="https://codecov.io/gh/mhostetter/galois/branch/master/graph/badge.svg?token=3FJML79ZUK"></a>
 </div>
 <br>
 The Zmodn package provides a class for representing integers modulo a given positive integer. This class can be used to

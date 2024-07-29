@@ -3,6 +3,6 @@ message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Sánchez Yalí"
   given-names: "Alejandro"
-title: "Zmodn: Efficient arithmetic in Z/nZ"
+title: "Practical Modular Arithmetic Using NumPy"
 date-released: 2020-11-15
-url: "https://github.com/asanchezyali/Zmodn"
+url: "https://github.com/asanchezyali/zmodn"
