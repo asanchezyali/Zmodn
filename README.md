@@ -3,9 +3,6 @@
     <img src="logo/heading.svg" alt="Logo" width="100%" height="180px">
   </a>
 </div>
-<br>
-
-# Zmodn: Practical Modular Arithmetic Using NumPy
 
 The Zmodn package provides a class for representing elements in the ring of integers modulo n $(Z/nZ)$. It offers operations for modular arithmetic and matrix operations over this ring, making it useful for applications such as cryptography and computer algebra.
 
@@ -142,7 +139,7 @@ For more detailed information about the features and usage of Zmodn, please refe
 
 ## License
 
-Zmodn is licensed under the terms of the MIT license. See the [license file](https://github.com/asanchezyali/zmodn/blob/main/LICENSE) for details.
+Zmodn is licensed under the terms of the Creative Commons Zero v1.0 Universal license. See the [license file](https://github.com/asanchezyali/zmodn/blob/main/LICENSE) for details.
 
 ## Contact
 
