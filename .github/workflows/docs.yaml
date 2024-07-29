@@ -36,8 +36,8 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with dev
-          poetry run pip install sphinx  # Asegurarse de que Sphinx esté instalado
-          poetry run pip list  # Listar todos los paquetes instalados
+          poetry run pip install sphinx
+          poetry run pip list
 
       - name: Check Sphinx installation
         run: |
