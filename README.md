@@ -1,172 +1,124 @@
+# Zmodn: Practical Modular Arithmetic Using NumPy
+
 <div align="center">
   <a href="https://github.com/asanchezyali/zmodn#readme">
     <img src="logo/heading.svg" alt="Logo" width="100%" height="180px">
   </a>
 </div>
 
-The Zmodn package provides a class for representing elements in the ring of integers modulo n $(Z/nZ)$. It offers operations for modular arithmetic and matrix operations over this ring, making it useful for applications such as cryptography and computer algebra.
+Zmodn provides a Python class for representing and performing operations in the ring of integers modulo n (ℤ/nℤ). It's built on NumPy for efficient array operations, making it suitable for applications in cryptography, computer algebra, and other fields requiring modular arithmetic.
 
 ## Features
 
-- Perform arithmetic operations (addition, subtraction, multiplication, division, exponentiation) on integers modulo a given positive integer.
-- Compute the modular inverse of an integer modulo a given positive integer.
-- Perform matrix operations, including matrix multiplication and inversion, modulo a given positive integer.
-- Compare two integers modulo a given positive integer.
-- Access and modify the representatives of an integer modulo a given positive integer.
-- Efficient array operations using NumPy.
-- Compatibility with NumPy functions through the `__array_function__` protocol.
+- Perform modular arithmetic operations (addition, subtraction, multiplication, division, exponentiation)
+- Compute modular inverses
+- Handle matrix operations in modular arithmetic, including multiplication and inversion
+- Compare elements in modular arithmetic
+- Seamless integration with NumPy functions
 
 ## Installation
 
-To install Zmodn, you can use pip:
+Install Zmodn using pip:
 
 ```bash
 pip install -e .
 ```
 
-## Usage
+## Quick Start
 
-Here's an overview of how to use the Zmodn class:
-
-### Class Definition
+Here's a basic example of using the Zmodn class:
 
 ```python
-class Zmodn:
-    def __init__(self, matrix_integers, module):
-        # ...
+from zmodn import Zmodn
+
+# Create Zmodn objects
+a = Zmodn([1, 2, 7], 5)
+b = Zmodn([3, 4, 2], 5)
+
+print(a)  # Output: [1 2 2] (mod 5)
+print(a + b)  # Output: [4 1 4] (mod 5)
+print(a * b)  # Output: [3 3 4] (mod 5)
+print(a.mod_inv())  # Output: [1 3 3] (mod 5)
 ```
 
-The `Zmodn` class is initialized with two parameters:
-- `matrix_integers`: A list of integers or a single integer representing the elements in Z/nZ.
-- `module`: A positive integer representing the modulus.
+## Detailed Usage
 
-### Basic Usage
-
-1. Creating a Zmodn object:
+### Creating Zmodn Objects
 
 ```python
-z = Zmodn([1, 2, 3], 5)
-print(z)  # Output: [1 2 3] (mod 5)
+# Single element
+x = Zmodn(3, 7)  # 3 (mod 7)
+
+# List of elements
+y = Zmodn([1, 2, 3], 5)  # [1 2 3] (mod 5)
+
+# Matrix
+z = Zmodn([[1, 2], [3, 4]], 6)  # [[1 2] [3 4]] (mod 6)
 ```
 
-2. Arithmetic operations:
+### Arithmetic Operations
 
 ```python
 a = Zmodn([1, 2], 7)
 b = Zmodn([3, 4], 7)
-print(a + b)  # Output: [4 6] (mod 7)
-print(a * b)  # Output: [3 1] (mod 7)
+
+print(a + b)  # Addition: [4 6] (mod 7)
+print(a - b)  # Subtraction: [5 5] (mod 7)
+print(a * b)  # Multiplication: [3 1] (mod 7)
+print(a / b)  # Division: [5 4] (mod 7)
+print(a ** 2)  # Exponentiation: [1 4] (mod 7)
+print(-a)  # Negation: [6 5] (mod 7)
 ```
 
-3. Matrix operations:
+### Matrix Operations
 
 ```python
 m1 = Zmodn([[1, 2], [3, 4]], 5)
 m2 = Zmodn([[2, 3], [1, 4]], 5)
-print(m1 @ m2)  # Output: [[4 1] [0 1]] (mod 5)
+
+print(m1 @ m2)  # Matrix multiplication: [[4 1] [0 0]] (mod 5)
+print(m1.inv())  # Matrix inversion: [[4 3] [2 4]] (mod 5)
 ```
 
-4. Modular inverse:
+### Modular Inverse
 
 ```python
-z = Zmodn(3, 7)
-print(z.mod_inv())  # Output: 5 (mod 7)
+x = Zmodn([2, 3], 5)
+print(x.mod_inv())  # Modular inverse: [3 2] (mod 5)
 ```
 
-5. Matrix inverse:
+### Comparison Operations
 
 ```python
-m = Zmodn([[1, 2], [3, 4]], 5)
-print(m.inv())  # Output: [[4 3] [2 1]] (mod 5)
+a = Zmodn([1, 2], 7)
+b = Zmodn([1, 3], 7)
+
+print(a == b)  # False
+print(a < b)   # True
+print(a >= b)  # False
 ```
 
-## Detailed Features
+## Notes and Limitations
 
-### Attributes
-
-- `module`: The modulus of the Zmodn object.
-- `representatives`: A NumPy array containing the representatives of the elements modulo `module`.
-
-### Methods
-
-#### Basic Arithmetic Operations
-
-The class implements basic arithmetic operations using operator overloading:
-- `__add__`: Addition
-- `__sub__`: Subtraction
-- `__mul__`: Multiplication
-- `__truediv__`: Division
-- `__pow__`: Exponentiation
-- `__neg__`: Negation
-- `__pos__`: Positive
-
-These operations are performed element-wise and the results are always reduced modulo `module`.
-
-#### Matrix Operations
-
-- `__matmul__`: Matrix multiplication
-
-#### Comparison Operations
-
-- `__eq__`: Equality
-- `__ne__`: Inequality
-- `__lt__`: Less than
-- `__le__`: Less than or equal to
-- `__gt__`: Greater than
-- `__ge__`: Greater than or equal to
-
-#### Other Methods
-
-- `mod_inv()`: Computes the modular inverse of the elements.
-- `inv()`: Computes the inverse of a matrix over Z/nZ.
-- `classes`: Property that returns a list of Zmodn objects, each representing one element.
-
-## Notes
-
-- The class uses NumPy for efficient array operations.
-- It implements the `__array_function__` protocol for compatibility with NumPy functions.
-- Matrix operations are only defined for square matrices.
+- The `mod_inv()` method works for individual elements and vectors, but not for matrices. Use `inv()` for matrix inversion.
+- All operations assume that Zmodn objects have the same modulus.
 - The class includes type checking and error handling for invalid inputs.
-
-## Limitations
-
-- The `mod_inv()` method does not work for matrices. Use `inv()` for matrix inversion.
-- The class assumes that all operations are performed between Zmodn objects with the same modulus.
 
 ## Documentation
 
-For more detailed information about the features and usage of Zmodn, please refer to the [documentation](https://asanchezyali.github.io/zmodn/).
-
-## License
-
-Zmodn is licensed under the terms of the Creative Commons Zero v1.0 Universal license. See the [license file](https://github.com/asanchezyali/zmodn/blob/main/LICENSE) for details.
-
-## Contact
-
-If you have any questions, comments, or issues, please feel free to [contact us](https://github.com/asanchezyali).
+For more detailed information, please refer to the [full documentation](https://asanchezyali.github.io/zmodn/).
 
 ## Contributing
 
-We welcome contributions to the `zmodn` library! If you have an idea for a new feature or improvement, please feel free to create an issue or submit a pull request.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To contribute to the `zmodn` library, you will need to:
+## License
 
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your changes to the code.
-4. Add tests to ensure that your changes work correctly.
-5. Push your branch to the fork.
-6. Create a pull request to merge your changes into the main repository.
-
-Please be sure to follow the coding style guide and add documentation for any new features or changes that you make.
-
-We appreciate your contributions to the zmodn library!
+This project is licensed under the Creative Commons Zero v1.0 Universal license. See the [LICENSE](LICENSE) file for details.
 
 ## Citation
 
-If this library was useful to you in your research, please cite us. Following the [GitHub citation standards](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files), here is the recommended citation.
-
-### BibTeX
+If you use Zmodn in your research, please cite it as follows:
 
 ```bibtex
 @software{Sanchez_Alejandro_2020,
@@ -178,8 +130,9 @@ If this library was useful to you in your research, please cite us. Following th
 }
 ```
 
-### APA
+## Contact
 
-```
-Sánchez, A. (2023). Zmodn: Practical Modular Arithmetic Using NumPy. [Computer software]. https://github.com/asanchezyali/Zmodn
-```
+For questions or issues, please open an issue on GitHub or contact the maintainer directly.
+You can also join our Discord community for discussions, support, and updates:
+[Math & Code](https://discord.gg/gJ3vCgSWeh) Discord Server
+Join us to connect with other users, get help, and stay updated on the latest developments!
