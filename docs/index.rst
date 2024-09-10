@@ -47,7 +47,10 @@ License
 Contact
 -------
 
-If you have any questions, comments, or issues, please feel free to contact us.
+For questions or issues, please open an `issue <https://github.com/asanchezyali/zmodn/issues>`_ on GitHub or contact the maintainer directly.
+You can also join our Discord community for discussions, support, and updates:
+`Math & Code Discord Server <https://discord.gg/gJ3vCgSWeh>`_
+Join us to connect with other users, get help, and stay updated on the latest developments!
 
 Contributing
 ------------
@@ -65,7 +68,6 @@ To contribute to the :obj:`zmodn` library, you will need to:
 7. Please be sure to follow the coding style guide and add documentation for any new features or changes that you make.
 
 We appreciate your contributions to the zmodn library!
-
 
 Citation
 --------
