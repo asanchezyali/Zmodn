@@ -1,96 +1,194 @@
-The :doc:`getting-started` guide is intended to help you get started with installing and using the library in your own
-projects. See ":doc:`Basic Usage`" for more detailed information on how to use the library.
+The :doc:`getting-started` guide is intended to help you get started with using the :obj:`zmodn` library. If you are a developer who wants to contribute to the project or set up a development environment, please refer to the :doc:`developer-guide`.
 
 Install the package
 -------------------
 
-The last stable release is available on PyPI and can be installed with pip:
+First, you need to install the :obj:`zmodn` library.
+
+The latest version of the library is available on GitHub. You can clone the repository and install the library using the
+following commands:
 
 .. code-block:: console
 
-    pip install zmodn
-    zmodn.__version__
+    git clone
+    cd zmodn
+    pip install -e .
 
-Create a :obj:`~.zmodn.Zmodn` instance
-------------------------------
-
-The :obj:`zmodn` class is the main interface to the library. It represents a set of integers modulo a given modulus. The
-modulus must be a positive integer. The representatives of the set are given as a list of integers or a single integer.
-In this example, we create a :obj:`Zmodn` instance representing the set of integers modulo 5 with representatives 1, 2,
-3, 4, and 5 (which are equivalent to 1, 2, 3, 4, and 0 modulo 5, respectively):
+Basic Usage
+-----------
+To start using the :obj:`zmodn` library, import it in your Python script:
 
 .. code-block:: python
 
     from zmodn import Zmodn
+
+The :obj:`zmodn` library provides a :obj:`Zmodn` class that represents a set of integers modulo a given modulus. You can
+create a :obj:`Zmodn` instance by providing a list of representatives and a modulus. For example, to create a
+:obj:`Zmodn` instance representing the set of integers modulo 5 with representatives 1, 2, 3, 4, and 5, you can use the
+following code:
+
+.. code-block:: python
+
     zmodn = Zmodn([1, 2, 3, 4, 5], 5)
 
-The :obj:`Zmodn` class is a subclass of :obj:`numpy.ndarray`, so it can be used in the same way as a NumPy array:
+You can create a :obj:`Zmodn` objects in several ways:
+
+1. Single element:
 
 .. code-block:: python
 
-    zmodn[0]
-    zmodn[1:3]
-    zmodn[0] = 6
-    zmodn[1:3] = [7, 8]
-    zmodn[0] = 1
-    zmodn[1:3] = [2, 3]
+    a = Zmodn(1, 5)
+    print(a)  # Output: [1] (mod 5)
 
-The :obj:`Zmodn` class also supports the :obj:`len` function, which returns the number of representatives:
+2. List of elements:
 
 .. code-block:: python
 
-    len(zmodn)
+    b = Zmodn([1, 2, 7], 5)
+    print(b)  # Output: [1 2 2] (mod 5)
 
-The :obj:`Zmodn` class supports the :obj:`in` operator, which checks if a given representative is in the set:
-
-.. code-block:: python
-
-    1 in zmodn
-    2 in zmodn
-    3 in zmodn
-    4 in zmodn
-    5 in zmodn
-    6 in zmodn
-    7 in zmodn
-    8 in zmodn
-
-The :obj:`Zmodn` class supports the :obj:`bool` function, which returns :obj:`True` if the set is not empty and
-
-:obj:`False` otherwise:
+3. Matrix:
 
 .. code-block:: python
 
-    bool(zmodn)
+    c = Zmodn([[1, 2], [3, 4]], 5)
+    print(c)  # Output: [[1 2] [3 4]] (mod 5)
 
-Perform arithmetic operations
------------------------------
 
-Once you have two :obj:`Zmodn` instances, you can perform arithmetic can be performed using normal NumPy arithmetic.
+Arithmetic Operations
+---------------------
 
-standard element-wise array arithmetic operations -- addition, subtraction, multiplication, division and exponentiation
-are easily performed on :obj:`Zmodn` instances. For example, to add two :obj:`Zmodn` instances, you can use the :obj:`+`
-operator:
+You can perform arithmetic operations on :obj:`Zmodn` instances using standard element-wise array arithmetic operations.
 
-.. code-block:: python
-
-    zmodn1 = Zmodn([1, 2, 3, 4, 5], 5)
-    zmodn2 = Zmodn([1, 2, 3, 4, 5], 5)
-    zmodn1 + zmodn2
-
-The :obj:`Zmodn` class also supports the :obj:`-`, :obj:`*`, :obj:`/`, and :obj:`**` operators:
+1. Addition:
 
 .. code-block:: python
 
-    zmodn1 - zmodn2
-    zmodn1 * zmodn2
-    zmodn1 / zmodn2
-    zmodn1 ** zmodn2
+    a = Zmodn([1, 2, 7], 5)
+    b = Zmodn([3, 4, 2], 5)
+    print(a + b)  # Output: [4 1 4] (mod 5)
 
-The :obj:`Zmodn` class supports the :obj:`==` and :obj:`!=` operators, which check if two :obj:`Zmodn` instances are equal or not equal, respectively:
+2. Subtraction:
 
 .. code-block:: python
 
-    zmodn1 == zmodn2
-    zmodn1 != zmodn2
+    print(a - b)  # Output: [3 3 0] (mod 5)
 
-See :doc:`/basic-usage/operations` for more information on the arithmetic operations.
+3. Multiplication:
+
+.. code-block:: python
+
+    print(a * b)  # Output: [3 3 4] (mod 5)
+
+4. Division:
+
+.. code-block:: python
+
+    print(a / b)  # Output: [2 3 4] (mod 5)
+
+5. Exponentiation:
+
+.. code-block:: python
+
+    print(a ** b)  # Output: [1 1 4] (mod 5)
+
+Matrix Operations
+-----------------
+
+The :obj:`Zmodn` class also supports matrix operations in modular arithmetic. You can perform matrix addition,
+subtraction, multiplication, exponentiation, and inversion.
+
+1. Matrix Addition:
+
+.. code-block:: python
+
+    a = Zmodn([[1, 2], [3, 4]], 5)
+    b = Zmodn([[2, 1], [4, 3]], 5)
+    print(a + b)  # Output: [[3 3] [2 2]] (mod 5)
+
+2. Matrix Subtraction:
+
+
+.. code-block:: python
+
+    print(a - b)  # Output: [[4 1] [4 1]] (mod 5)
+
+
+3. Matrix Multiplication:
+
+.. code-block:: python
+
+    print(a @ b)  # Output: [[10 7] [22 15]] (mod 5)
+
+4. Matrix Exponentiation:
+
+.. code-block:: python
+
+    print(a ** 2)  # Output: [[7 10] [15 22]] (mod 5)
+
+5. Matrix Inversion:
+
+.. code-block:: python
+
+    print(a.inv())  # Output: [[4 3] [2 1]] (mod 5)
+
+Modular Inverse
+---------------
+
+For non-matrix elements, you can compute the modular inverse using the :obj:`mod_inv` method.
+
+.. code-block:: python
+
+    a = Zmodn(3, 5)
+    print(a.mod_inv())  # Output: 2 (mod 5)
+
+Compare Elements
+
+You can compare elements in modular arithmetic using standard comparison operators.
+
+.. code-block:: python
+
+    a = Zmodn(3, 5)
+    b = Zmodn(4, 5)
+    print(a < b)  # Output: True
+
+Advanced Features
+-----------------
+
+Indexing and Slicing:
+
+You can access elements of a :obj:`Zmodn` instance using indexing and slicing.
+
+.. code-block:: python
+
+    a = Zmodn([1, 2, 3, 4, 5], 5)
+    print(a[0])  # Output: 1
+    print(a[1:3])  # Output: [2 3]
+
+You can also iterate over the elements of a :obj:`Zmodn` instance using a loop.
+
+.. code-block:: python
+
+    for element in a:
+        print(element)
+
+
+Error Handling
+--------------
+
+
+The :obj:`zmodn` library provides error handling for common arithmetic errors, such as division by zero and invalid
+modulus.
+
+.. code-block:: python
+
+    a = Zmodn(3, 0)  # Raises ZeroDivisionError
+    b = Zmodn(3, 1)  # Raises ValueError
+
+Best Practices
+--------------
+
+When working with the :obj:`zmodn` library, it is recommended to follow these best practices:
+
+1. Always ensure that Zmodn objects that you're operating on have the same modulus.
+2. For matrix operations, make sure your matrices are square and invertible when necessary.
